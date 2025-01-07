@@ -1,0 +1,21 @@
+[project]
+name = "yamusicrichpresence"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "ledxdeliveryflopp",email = "korstim18@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.12,<4.0"
+dependencies = [
+    "pypresence (>=4.3.0,<5.0.0)",
+    "nuitka (>=2.5.9,<3.0.0)",
+    "fastapi (>=0.115.6,<0.116.0)",
+    "loguru (>=0.7.3,<0.8.0)",
+    "uvicorn (>=0.34.0,<0.35.0)",
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
