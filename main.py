@@ -39,5 +39,4 @@ if __name__ == '__main__':
     api_settings = settings.init_settings()
     host = api_settings.get("host")
     port = api_settings.get("port")
-    settings.set_settings(host, port)
     run_api(f"{host}", port)
