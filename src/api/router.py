@@ -11,5 +11,5 @@ async def in_main_page_router(service: BaseService = Depends(init_service)):
 
 
 @handler_router.get("/listen-music/")
-async def listen_music_router(service: BaseService = Depends(init_service)):
-    return await service.listen_music_presence()
+async def listen_music_router(music_cover_url: str, service: BaseService = Depends(init_service)):
+    return await service.listen_music_presence(music_cover_url)
