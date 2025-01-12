@@ -167,3 +167,9 @@ main.onefile-build
 
 # loguru
 rich-presence.log
+
+# yandex app js
+static/resources/js/yandex/
+
+# test config
+discord/
