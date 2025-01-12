@@ -14,8 +14,10 @@ from src.settings.settings import settings
 
 @asynccontextmanager
 async def lifespan(api: FastAPI):
+    """Подключение к discord rpc при запуске"""
     try:
         await rpc_service.connect()
+        logger.info("connected to rpc")
     except DiscordNotFound as exc:
         logger.error(f"connecting to rpc error: {exc}")
         sys.exit()
@@ -40,3 +42,4 @@ if __name__ == '__main__':
     host = api_settings.get("host")
     port = api_settings.get("port")
     run_api(f"{host}", port)
+
