@@ -10,6 +10,7 @@ let app_location = null
 let track_id = null // id трека который искать
 let track_data = null // сохраненая информация о треке
 let track_new = null // новый трек или нет
+let player_state = null // новый трек или нет
 let stop = null // timestamp паузы
 
 
@@ -42,8 +43,7 @@ module.exports = {
 
     get_track_url_by_handler: function (detail_url) { // framesHandler
         let track_url = new URL(detail_url);
-        let music_id = new URLSearchParams(track_url.search).get("trackId");
-        track_id = music_id
+        track_id = new URLSearchParams(track_url.search).get("trackId")
         return null
     },
 
@@ -55,12 +55,20 @@ module.exports = {
     set_state: function(state) {
         fetch(`http://${rich_presence_host}:${rich_presence_port}/handler/${state}/`, {
             method: "GET"
-        }).then(r => console.log(r))
+        }).then()
         return null
     },
 
     set_new_state: function (status) {
         track_new = status
+    },
+
+    set_player_state: function (status) {
+        player_state = status
+    },
+
+    get_player_state: function () {
+        return player_state
     },
 
     set_pause_state: function () {
@@ -80,7 +88,7 @@ module.exports = {
             headers: {
                 'Content-Type': 'application/json'
             },
-        }).then(r => console.log("stop", r))
+        }).then()
         return null
     },
 
@@ -116,7 +124,7 @@ module.exports = {
             headers: {
                 'Content-Type': 'application/json'
             },
-        }).then(r => console.log("start", r))
+        }).then()
         return null
     }
 }

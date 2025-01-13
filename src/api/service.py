@@ -43,11 +43,11 @@ class BaseService:
                                          state=f"Автор: {schemas.author}", start=time.time(),
                                          large_image=schemas.cover,
                                          small_image="main", end=time.time() + (schemas.duration / 1000) - time_passed)
-                logger.info(f"success set old listen music presence")
+                logger.info(f"success set continue listen music presence")
                 return {"detail": "success"}
         except Exception as exc:
             logger.info(f"listen music error: {exc}")
-            raise HTTPException(detail="error while set music listen presence", status_code=400)
+            raise HTTPException(detail="error while set continue music listen presence", status_code=400)
 
     @staticmethod
     async def pause_listen_music_presence(schemas: SetPausePresenceSchemas) -> dict:
