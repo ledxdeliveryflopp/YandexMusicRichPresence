@@ -1,6 +1,21 @@
-from pypresence import AioPresence
+from loguru import logger
+from pypresence import AioPresence, DiscordNotFound, DiscordError
 
-# TODO: сделать класс наследованный от Presence, сделать инит как обычный класс
+
+class RpcService(AioPresence):
+    """Сервис Discord Rpc"""
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs, client_id="you_app_id_int")
+
+    async def rpc_reconnect(self) -> dict:
+        logger.info("discord closed, trying reconnect")
+        try:
+            await self.connect()
+            logger.info("reconnect successful")
+            return {"detail": "success reconnect"}
+        except (DiscordNotFound, DiscordError, BrokenPipeError) as exc:
+            logger.error(f"reconnect to rpc error: {exc}")
+            return {"detail": "failed reconnect"}
 
 
-rpc_service = AioPresence()
+rpc_service = RpcService()

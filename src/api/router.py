@@ -1,6 +1,4 @@
 from fastapi import APIRouter, Depends
-from starlette.requests import Request
-
 from src.api.schemas import SetPlayPresenceSchemas, SetPausePresenceSchemas
 from src.api.service import BaseService, init_service
 
