@@ -1,5 +1,4 @@
 import os
-import sys
 from contextlib import asynccontextmanager
 
 import uvicorn
@@ -20,7 +19,7 @@ async def lifespan(api: FastAPI):
         logger.info("connected to rpc")
     except DiscordNotFound as exc:
         logger.error(f"connecting to rpc error: {exc}")
-        sys.exit()
+        pass
     yield
 
 app = FastAPI(lifespan=lifespan)
