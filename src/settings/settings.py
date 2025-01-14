@@ -6,9 +6,8 @@ from loguru import logger
 
 
 @dataclass
-# TODO: путь через getcwd считает папку яндекса из-за дочернего процесса(мб),
-#  можно попробовать определить путь к файлу api(os.path(__file__))
 class Settings:
+    """Класс настроек api"""
     api_host: str = None
     api_port: int = None
 
